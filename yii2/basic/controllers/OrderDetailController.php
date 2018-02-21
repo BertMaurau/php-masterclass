@@ -36,12 +36,14 @@ class OrderDetailController extends Controller
      */
     public function actionIndex()
     {
+        $order = Order::findOne(Yii::$app -> request -> queryParams -> order_id);
+
         $searchModel = new SearchOrderDetail();
-        $dataProvider = $searchModel -> search(Yii::$app -> request -> queryParams);
+        $orderDetails = $searchModel -> search(Yii::$app -> request -> queryParams);
 
         return $this -> render('index', [
-                    'searchModel'  => $searchModel,
-                    'dataProvider' => $dataProvider,
+                    'order'        => $searchModel,
+                    'orderDetails' => $orderDetails,
         ]);
     }
 

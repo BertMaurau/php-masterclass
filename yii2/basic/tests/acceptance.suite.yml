@@ -1,0 +1,17 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - PhpBrowser:
+            url: http://dev.yii/
+            # browser: chrome
+        - Yii2:
+            part: orm
+            entryScript: index-test.php
+            cleanup: false
+        - Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=dev'
+            user: 'root'
+            password: 'root'
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: true

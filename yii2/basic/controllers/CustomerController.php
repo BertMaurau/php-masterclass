@@ -53,7 +53,6 @@ class CustomerController extends Controller
     public function actionView($id)
     {
         $this -> findModel($id) -> getCountry();
-        die(var_dump($this));
         return $this -> render('view', [
                     'model' => $this -> findModel($id),
         ]);
