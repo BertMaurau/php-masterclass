@@ -19,11 +19,6 @@ class m180207_110513_country extends Migration
         }
         $this -> alterColumn('customer', 'country', 'integer');
 
-        // add foreign key for table `customer`
-        $this -> addForeignKey(
-                self::$fk, 'customer', 'country', 'country', 'id', 'NO ACTION'
-        );
-
         $this -> insert('country', [
             'iso'  => 'BE',
             'name' => 'Belgium',
@@ -32,8 +27,6 @@ class m180207_110513_country extends Migration
 
     public function safeDown()
     {
-        $this -> dropForeignKey(self::$fk, 'customer');
-
         $this -> alterColumn('customer', 'country', 'varchar(2)');
 
         if ($this -> db -> schema -> getTableSchema('country', true) === null) {
